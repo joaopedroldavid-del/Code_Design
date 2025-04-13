@@ -1,0 +1,27 @@
+from typing import Dict
+from .calculator_1 import Calculator1
+
+class MockRequest:
+    def __init__(self, body: Dict) -> None:
+        self.json = body
+
+
+def test_calculate():
+    number = 30
+    calculator = 1
+    result = 60.62
+
+    mock_request = MockRequest(body={ "number": number })
+    calculator_1 = Calculator1()
+
+    response = calculator_1.calculate(mock_request)
+    
+    assert "data" in response
+    assert "Calculator" in response["data"]
+    assert "result" in response["data"]
+
+    assert response["data"]["result"] == result
+    assert response["data"]["Calculator"] == calculator
+
+    print()
+    print(response)
