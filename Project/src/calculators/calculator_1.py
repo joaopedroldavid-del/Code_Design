@@ -1,5 +1,5 @@
 from typing import Dict
-from flask import request as FlaskRequest # type: ignore
+from flask import Request as FlaskRequest # type: ignore
 
 
 class Calculator1:

@@ -1,4 +1,4 @@
-import numpy
+import numpy # type: ignore
 from typing import List
 
 class NumpyHandler:
