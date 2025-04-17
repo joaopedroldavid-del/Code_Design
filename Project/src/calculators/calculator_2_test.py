@@ -8,7 +8,7 @@ class MockRequest:
 def test_calculate():
     numbers = [2.12, 4.62, 1.32]
     calculator = 2
-    result = 0
+    result = 0.081
     
     mock_request = MockRequest({ "numbers": numbers })
 
@@ -19,7 +19,7 @@ def test_calculate():
     assert "Calculator" in response[ "data" ]
     assert "result" in response[ "data" ]
 
-    #assert response[ "data" ][ "result" ] == result
+    assert response[ "data" ][ "result" ] == result
     assert response[ "data" ][ "Calculator" ] == calculator
 
     print()
