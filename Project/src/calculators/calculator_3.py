@@ -2,9 +2,8 @@ from typing import Dict, List
 from flask import Request as FlaskRequest # type: ignore
 from src.drivers.numpy_handler import NumpyHandler
 from src.drivers.interfaces.driver_handler_interface import DriverHandlerInterface
-from src.errors.http_unprocessable_entity import HttpUnprocessableEntityError # type: ignore
 
-class Calculator2:
+class Calculator3:
 
     def __init__(self, driver_handler: DriverHandlerInterface) -> None:
         self.__driver_handler = driver_handler
@@ -22,23 +21,29 @@ class Calculator2:
 
     def __validate_body(self, body: Dict) -> List:
         if "numbers" not in body:
-            raise HttpUnprocessableEntityError("Invalid body")
+            raise Exception("Invalid body")
         
         input_data = list(body["numbers"])
         return input_data
 
-    def __process_data(self, numbers: List[float]) -> float:
-        first_process = [ (num * 11) ** 0.95 for num in numbers ]
-
-        result = self.__driver_handler.standard_drivation(first_process)
+    def __process_data(self, numbers: List[float]) -> str:
         
-        return 1/result
+        first_process = 1
+        for num in numbers:
+            first_process *= num
 
-    def __format_response(self, calc_result: float) -> Dict:
+        second_process = self.__driver_handler.variance(numbers)
+        
+        if first_process > second_process:
+            return "Sucesso"
+
+        return "ERROR: variancia é menor que o valor do elementos multiplicados"
+
+    def __format_response(self, calc_result: str) -> Dict:
         return {
              "data": {
-                  "Calculator": 2,
-                  "result": round(calc_result, 3)
+                  "Calculator": 3,
+                  "result": calc_result
              }
         }
         

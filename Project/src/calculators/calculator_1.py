@@ -1,5 +1,6 @@
 from typing import Dict
 from flask import Request as FlaskRequest # type: ignore
+from src.errors.http_unprocessable_entity import HttpUnprocessableEntityError # type: ignore
 
 
 class Calculator1:
@@ -20,7 +21,7 @@ class Calculator1:
     
     def __validate_body(self, body: Dict) -> float:
         if "number" not in body:
-            raise Exception("Invalid body")
+            raise HttpUnprocessableEntityError("Invalid body")
         
         input_data = float(body["number"])
         return input_data

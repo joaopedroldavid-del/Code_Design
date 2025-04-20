@@ -1,5 +1,5 @@
 from typing import Dict, List
-from .calculator_2 import Calculator2
+from .calculator_3 import Calculator3
 from src.drivers.numpy_handler import NumpyHandler
 from src.drivers.interfaces.driver_handler_interface import DriverHandlerInterface
 
@@ -14,15 +14,15 @@ class MockDriverHandler(DriverHandlerInterface):
         return 100
 
 def test_calculate():
-    numbers = [2.12, 4.62, 1.32]
-    calculator = 2
-    result = 0.333
+    numbers = [2, 5, 10]
+    calculator = 3
+    result = "ERROR: variancia é menor que o valor do elementos multiplicados"
     
     mock_request = MockRequest({ "numbers": numbers })
 
     driver = MockDriverHandler()
-    calculator2 = Calculator2(driver)
-    response = calculator2.calculate(mock_request)
+    calculator3 = Calculator3(driver)
+    response = calculator3.calculate(mock_request)
     
     assert "data" in response
     assert "Calculator" in response[ "data" ]

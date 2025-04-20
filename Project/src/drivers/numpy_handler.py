@@ -8,3 +8,6 @@ class NumpyHandler(DriverHandlerInterface):
     
     def standard_drivation(self, numbers: list[float]) -> float:
         return self.__np.std(numbers)
+    
+    def variance(self, numbers: list[float]) -> float:
+        return self.__np.var(numbers)
