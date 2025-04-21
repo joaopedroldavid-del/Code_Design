@@ -2,16 +2,7 @@ from typing import Dict, List
 from .calculator_2 import Calculator2
 from src.drivers.numpy_handler import NumpyHandler
 from src.drivers.interfaces.driver_handler_interface import DriverHandlerInterface
-
-class MockRequest:
-    def __init__( self, body: Dict ) -> None:
-        self.json = body
-
-class MockDriverHandler(DriverHandlerInterface):
-    def standard_drivation(self, numbers: List[float]) -> float:
-        return 3
-    def variance(self, numbers: List[float]) -> float:
-        return 100
+from .mocks.common_mocks import MockRequest, MockDriverHandler
 
 def test_calculate():
     numbers = [2.12, 4.62, 1.32]

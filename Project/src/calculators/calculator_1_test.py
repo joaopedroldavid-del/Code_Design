@@ -1,11 +1,7 @@
 from typing import Dict
 from pytest import raises
 from .calculator_1 import Calculator1
-
-class MockRequest:
-    def __init__( self, body: Dict ) -> None:
-        self.json = body
-
+from .mocks.common_mocks import MockRequest
 
 def test_calculate():
     number = 30
